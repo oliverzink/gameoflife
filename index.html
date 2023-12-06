@@ -21,7 +21,7 @@
         <button class="zoomButton" onclick="zoomIn()">Zoom Out</button>
         <button class="randoButton" onclick="randomize()">Randomize</button>
         <button onclick="getStartCells()">←</button>
-        <button onclick="gameTickCustom()">→</button>
+        <button onclick="singleTick()">→</button>
         <select name="presets" id="presets" onInput='presets()'>
             <option value="none">--</option>
             <option value="glider">Glider</option>
@@ -29,6 +29,8 @@
         </select>
         <input type="checkbox" id="history" name="history">
         <label for="history">history on/off</label>
+        <input type="checkbox" id="customtick" name="customtick">
+        <label for="customtick">Custom rules?</label>
     </div>
 
     <div id="controls-row2" style="text-align: center; margin-top: 10px;">

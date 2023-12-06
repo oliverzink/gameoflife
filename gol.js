@@ -16,6 +16,7 @@ let cellSize = zoomLevels[currentZoomIndex];
 
 let isMouseDown = false;
 historyDisplay = false;
+customtick = false;
 
 canvas.addEventListener('mousedown', (event) => {
     toggleCell(event);
@@ -33,6 +34,7 @@ canvas.addEventListener('mouseup', () => {
 });
 
 const checkbox = document.getElementById('history');
+const tick = document.getElementById('customtick');
 
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
@@ -42,6 +44,16 @@ checkbox.addEventListener('change', function () {
     }
     drawGrid();
 
+});
+
+
+tick.addEventListener('change', function () {
+    if (tick.checked) {
+        customtick = true;
+    } else {
+        customtick = false;
+    }
+    // startGame();
 });
 
 function toggleCell(event) {
@@ -74,7 +86,13 @@ function toggleSpecificCell(x, y) {
     drawGrid()
 }
 
-
+function singleTick() {
+    if (customtick) {
+        gameTickCustom();
+    } else {
+        gameTick();
+    }
+}
 
 function presets() {
     var presetValue = document.getElementById("presets").value;
@@ -265,7 +283,7 @@ function gameTickCustom() {
                     b = JSON.stringify([nx, ny]);
                     var found = a.indexOf(b);
                     if (found != -1) {
-                        console.log("heyeo");
+                        // console.log("heyeo");
 
                         let distance = Math.abs(dx) + Math.abs(dy);
                         let key = `${x},${y}`;
@@ -448,8 +466,12 @@ function startGame() {
             intervalRate = 1000;
             break;
     }
-
-    interval = setInterval(gameTickCustom, intervalRate);
+    console.log(customtick);
+    if (customtick) {
+        interval = setInterval(gameTickCustom, intervalRate);
+    } else {
+        interval = setInterval(gameTick, intervalRate);
+    }
 }
 
 function stopGame() {
