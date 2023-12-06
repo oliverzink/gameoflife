@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conway's Game of Life with Zoom and Slide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="gameCanvas" width="800" height="800"></canvas>
+    <div id="controls-row1" style="text-align: center;">
+        <label for="skipGenerations">Skip to:</label>
+        <input type="number" id="skipGenerations" name="skipGenerations" value="100" min="0">
+        <button onclick="skipGenerations()">Skip</button>
+        <button onclick="resetGrid()">Reset</button>
+        <button class="startButton" onclick="startGame()">Start</button>
+        <button class="stopButton" onclick="stopGame()">Stop</button>
+        <button class="zoomButton" onclick="zoomOut()">Zoom In</button>
+        <button class="zoomButton" onclick="zoomIn()">Zoom Out</button>
+        <button class="randoButton" onclick="randomize()">Randomize</button>
+        <button onclick="getStartCells()">←</button>
+        <button onclick="gameTickCustom()">→</button>
+        <select name="presets" id="presets" onInput='presets()'>
+            <option value="none">--</option>
+            <option value="glider">Glider</option>
+            <option value="morph">Morph</option>
+        </select>
+        <input type="checkbox" id="history" name="history">
+        <label for="history">history on/off</label>
+    </div>
+
+    <div id="controls-row2" style="text-align: center; margin-top: 10px;">
+        <label for="speedSelect">select speed: </label>
+        <select id="speedSelect">
+            <option value="superfast">Super Fast</option>
+            <option value="fast" selected>Fast</option>
+            <option value="normal">Normal</option>
+            <option value="slow">Slow</option>
+        </select>
+        <span style="margin-left: 30px;" id="iteration">Generation: 0</span>
+        <span style="margin-left: 30px; text-align: center; color: white; margin-top: 10px;" id="coordinates">x: 0,
+            y:0</span>
+        <button id="copyButton">Copy Grid State</button>
+        <input type="text" id="gridStateInput" placeholder="Paste grid state here" style="margin-right: 10px;">
+        <button id="applyGridStateButton">Apply Grid State</button>
+    </div>
+    <script src="gol.js"></script>
+</body>
+
+</html>

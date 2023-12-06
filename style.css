@@ -1,0 +1,36 @@
+body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#gameCanvas {
+    border: 2px solid white;
+    display: block;
+    margin: 20px auto;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.startButton {
+    background-color: #37b700;
+}
+
+.stopButton {
+    background-color: #e60202;
+}
+
+.randoButton {
+    background-color: #d302e6;
+}
+
+.zoomButton {
+    background-color: #0038a1;
+}
